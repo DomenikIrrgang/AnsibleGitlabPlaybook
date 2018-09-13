@@ -1,0 +1,30 @@
+---
+- name: create gitlab volume gitlab-config
+  docker_volume:
+    name: gitlab-config
+    state: present
+
+- name: create gitlab volume gitlab-data
+  docker_volume:
+    name: gitlab-data
+    state: present
+
+- name: create gitlab volume gitlab-logs
+  docker_volume:
+    name: gitlab-logs
+    state: present
+
+- name: deploy gitlab container
+  docker_container:
+    name: "{{ gitlab_container_name }}"
+    image: "gitlab/gitlab-ce:10.8.4-ce.0"
+    state: started
+    hostname: "{{ inventory_hostname }}"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8181:22"
+    volumes:
+      - gitlab-config:/etc/gitlab
+      - gitlab-logs:/var/log/gitlab
+      - gitlab-data:/var/opt/gitlab

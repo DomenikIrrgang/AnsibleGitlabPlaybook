@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: yes
+  vars:
+    gitlab_container_name: custom_gitlab
+  roles:
+     - { role: deploy-gitlab, tags: ["deploy-gitlab"] }
+     - { role: undeploy-gitlab, tags: ["undeploy-gitlab"] }

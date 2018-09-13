@@ -1,0 +1,5 @@
+---
+- name: remove gitlab container
+  docker_container:
+    name: "{{ gitlab_container_name }}"
+    state: absent
