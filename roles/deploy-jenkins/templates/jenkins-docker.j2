@@ -1,0 +1,10 @@
+FROM jenkins/jenkins:2.78
+USER root
+RUN mkdir {{ jenkins_image_logfile }}
+RUN mkdir {{ jenkins_image_webroot }}
+RUN chown -R jenkins:jenkins {{ jenkins_image_logfile }}
+RUN chown -R jenkins:jenkins {{ jenkins_image_webroot }}
+USER jenkins
+
+ENV JAVA_OPTS="-Xmx8192m"
+ENV JENKINS_OPTS="--handlerCountMax=300 --logfile={{ jenkins_image_logfile }}/jenkins.log --webroot={{ jenkins_image_webroot }}/war"

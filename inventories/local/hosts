@@ -1,1 +1,5 @@
-localhost ansible_connection=local
+[gitlabservers]
+10.156.0.4
+
+[jenkinsservers]
+10.156.0.3

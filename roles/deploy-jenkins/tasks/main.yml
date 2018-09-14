@@ -1,0 +1,36 @@
+---
+- name: install docker-py
+  pip:
+    name: docker-py
+    state: present
+
+- name: create jenkins volume for logs {{ jenkins_volume_logs }}
+  docker_volume:
+    name: jenkins-logs
+    state: present
+
+- name: create jenkins volume for data {{ jenkins_volume_data }}
+  docker_volume:
+    name: jenkins-data
+    state: present
+
+- name: create directory for docker image
+  file:
+    path: {{ jenkins_docker_file_location }}
+    state: directory
+
+- name: deploy docker image using template
+  template:
+    src: jenkins-docker.j2
+    dest: {{ jenkins_docker_file_location }}
+
+- name: create jenkins container
+  docker_container:
+    name: "{{ jenkins_container_name }}"
+    image: "custom-jenkins:latest"
+    state: started
+    ports:
+      - "{{ jenkins_port }}:8080"
+    volumes:
+      - "{{ jenkins_volume_logs }}:/var/log/jenkins"
+      - "{{ jenkins_volume_data }}:/var/jenkins_home"

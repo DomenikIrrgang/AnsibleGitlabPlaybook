@@ -1,8 +1,16 @@
 ---
-- hosts: localhost
+- hosts: gitlabservers
   become: yes
-  vars:
-    gitlab_container_name: custom_gitlab
+  vars_files:
+    - /vars/gitlab.yml
   roles:
      - { role: deploy-gitlab, tags: ["deploy-gitlab"] }
      - { role: undeploy-gitlab, tags: ["undeploy-gitlab"] }
+
+- hosts: jenkinsservers
+  become: yes
+  vars_files:
+    - /vars/jenkins.yml
+  roles:
+     - { role: deploy-jenkins, tags: ["deploy-jenkins"] }
+     - { role: undeploy-jenkins, tags: ["undeploy-jenkins"] }
