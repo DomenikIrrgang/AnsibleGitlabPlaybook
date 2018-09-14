@@ -2,7 +2,7 @@
 - hosts: gitlabservers
   become: yes
   vars_files:
-    - /vars/gitlab.yml
+    - vars/gitlab.yml
   roles:
      - { role: deploy-gitlab, tags: ["deploy-gitlab"] }
      - { role: undeploy-gitlab, tags: ["undeploy-gitlab"] }
@@ -10,7 +10,7 @@
 - hosts: jenkinsservers
   become: yes
   vars_files:
-    - /vars/jenkins.yml
+    - vars/jenkins.yml
   roles:
      - { role: deploy-jenkins, tags: ["deploy-jenkins"] }
      - { role: undeploy-jenkins, tags: ["undeploy-jenkins"] }
