@@ -16,13 +16,13 @@
 
 - name: create directory for docker image
   file:
-    path: {{ jenkins_docker_file_location }}
+    path: "{{ jenkins_docker_file_location }}"
     state: directory
 
 - name: deploy docker image using template
   template:
     src: jenkins-docker.j2
-    dest: {{ jenkins_docker_file_location }}
+    dest: "{{ jenkins_docker_file_location }}"
 
 - name: create jenkins container
   docker_container:
