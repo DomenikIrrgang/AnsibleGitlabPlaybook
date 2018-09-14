@@ -24,6 +24,12 @@
     src: jenkins-docker.j2
     dest: "{{ jenkins_docker_file_location }}"
 
+- name: Build jenkins docker image
+  docker_image:
+    path: "{{ jenkins_docker_file_location }}"
+    name: custom-jenkins
+    tag: custom-jenkins
+
 - name: create jenkins container
   docker_container:
     name: "{{ jenkins_container_name }}"
