@@ -22,7 +22,7 @@
 - name: deploy docker image using template
   template:
     src: jenkins-docker.j2
-    dest: "{{ jenkins_docker_file_location }}"
+    dest: "{{ jenkins_docker_file_location }}/Dockerfile"
 
 - name: Build jenkins docker image
   docker_image:
