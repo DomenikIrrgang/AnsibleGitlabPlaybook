@@ -28,7 +28,7 @@
   docker_image:
     path: "{{ jenkins_docker_file_location }}"
     name: custom-jenkins
-    tag: custom-jenkins
+    tag: 1.0
 
 - name: create jenkins container
   docker_container:
