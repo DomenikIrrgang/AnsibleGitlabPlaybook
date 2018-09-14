@@ -28,12 +28,12 @@
   docker_image:
     path: "{{ jenkins_docker_file_location }}"
     name: custom-jenkins
-    tag: 1.0
+    tag: "{{ jenkins_image_tag }}"
 
 - name: create jenkins container
   docker_container:
     name: "{{ jenkins_container_name }}"
-    image: "custom-jenkins:latest"
+    image: "custom-jenkins:{{ jenkins_image_tag }}"
     state: started
     ports:
       - "{{ jenkins_port }}:8080"

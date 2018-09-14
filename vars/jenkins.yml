@@ -5,4 +5,5 @@ jenkins_volume_data: jenkins-data
 jenkins_volume_logs: jenkins-logs
 jenkins_image_logfile: /var/log/jenkins
 jenkins_image_webroot: /var/cache/jenkins
+jenkins_image_tag: 1.0
 jenkins_docker_file_location: /tmp/{{ jenkins_container_name }}
