@@ -1,5 +1,5 @@
 [gitlabservers]
-10.156.0.4
+gitlab.meetup-app.tk
 
 [jenkinsservers]
-10.156.0.3
+jenkins.meetup-app.tk
