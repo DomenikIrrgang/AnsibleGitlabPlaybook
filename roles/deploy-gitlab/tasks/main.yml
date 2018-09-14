@@ -25,8 +25,6 @@
     image: "gitlab/gitlab-ce:10.8.4-ce.0"
     state: started
     hostname: "gitlab.meetup-app.tk "
-    restart: yes
-    restart_policy: always
     ports:
       - "80:80"
       - "443:443"
